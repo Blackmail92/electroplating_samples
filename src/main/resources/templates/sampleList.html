@@ -7,96 +7,95 @@
           integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 </head>
 <body>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a th:href="@{/samples}">Список</a></li>
+    </ol>
+</nav>
 <form id="1" th:action="@{samples}" th:object="${sample}" th:method="post">
-    <div class="container">
-        <div class="row justify-content-md-left">
-            <div class="col">
-                <table class="table table-striped">
-                    <tr th:align="center">
-                        <th>#</th>
-                        <th>Дата</th>
-                        <th>Сила тока</th>
-                        <th>Высаживание</th>
-                        <th>Чернение</th>
-                        <th>Edit</th>
-                        <th>Delete</th>
-                    </tr>
-                    <tr>
-                        <td>
-                        </td>
-                        <td>
-                            <div class="form-row">
-                                <div class="col">
-                                    <input type="text" required pattern="[0-9]{1,2}\.[0-9]{1,2}\.[0-9]{4}" class="form-control" placeholder="&quot;--.--.----&quot;"
-                                           th:field="*{date}">
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-row">
-                                <div class="col">
-                                    <input type="text" required pattern="[0-9]{1,2}\.[0-9]{1,2}" class="form-control" placeholder="&quot;-.--&quot;"
-                                           th:field="*{amperage}">
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-row">
-                                <div class="col">
-                                    <div class="input-group mb-3">
-                                        <select required class="custom-select" id="inputGroupSelect02" th:field="*{epResult}">
-                                            <option disabled value="Выберите">Результат</option>
-                                            <option value="+">+</option>
-                                            <option value="-">-</option>
-                                        </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class=" form-row">
-                                <div class="col">
-                                    <select required class="custom-select" th:field="*{blackenResult}">
-                                        <option disabled value="Выберите">Результат</option>
-                                        <option value="+">+</option>
-                                        <option value="-">-</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </td>
-                        <td colspan="2" th:align="center">
-                            <div class=" form-row">
-                                <div class="col">
-                                    <button form="1" type="submit" class="btn btn-success btn-sm btn-block">✓</button>
-                                </div>
-                            </div>
-                        </td>
-                    </tr>
-                    <tr th:each="sample : ${samples}">
-                        <td th:text="${sample.id}"></td>
-                        <td th:text="${sample.date}"></td>
-                        <td th:text="${sample.amperage}"></td>
-                        <td th:align="center" th:text="${sample.epResult}"></td>
-                        <td th:align="center" th:text="${sample.blackenResult}"></td>
-                        <td th:align="center">
-                            <a th:href="@{'/samples/{id}'(id=${sample.id})}">
-                                <button type="button" class="btn btn-info btn-sm btn-block">📋</button>
-                            </a>
-                        </td>
-                        <td th:align="center">
-                            <a th:href="@{'/samples/delete/{id}'(id=${sample.id})}">
-                                <button type="button" class="btn btn-danger btn-sm btn-block">🗑</button>
-                            </a>
-                        </td>
-                    </tr>
-                </table>
-            </div>
-            <div class="col-md-auto">
-            </div>
-            <div class="col col-lg-2">
-            </div>
-        </div>
-    </div>
+    <table class="table table-striped">
+        <tr th:align="center">
+            <th>#</th>
+            <th>Дата</th>
+            <th>Сила тока</th>
+            <th>Высаживание</th>
+            <th>Чернение</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
+                <div class="form-row">
+                    <div class="col">
+                        <input type="text" required pattern="[0-9]{1,2}\.[0-9]{1,2}\.[0-9]{4}" class="form-control"
+                               placeholder="&quot;--.--.----&quot;"
+                               th:field="*{date}">
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="form-row">
+                    <div class="col">
+                        <input type="text" required pattern="[0-9]{1,2}\.[0-9]{1,2}" class="form-control"
+                               placeholder="&quot;-.--&quot;"
+                               th:field="*{amperage}">
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="form-row">
+                    <div class="col">
+                        <div class="input-group mb-3">
+                            <select required class="custom-select" id="inputGroupSelect02" th:field="*{epResult}">
+                                <option disabled value="Выберите">Результат</option>
+                                <option value="+">+</option>
+                                <option value="-">-</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class=" form-row">
+                    <div class="col">
+                        <select required class="custom-select" th:field="*{blackenResult}">
+                            <option disabled value="Выберите">Результат</option>
+                            <option value="+">+</option>
+                            <option value="-">-</option>
+                        </select>
+                    </div>
+                </div>
+            </td>
+            <td colspan="2" th:align="center">
+                <div class=" form-row">
+                    <div class="col">
+                        <button form="1" type="submit" class="btn btn-success btn-sm btn-block">✓</button>
+                    </div>
+                </div>
+            </td>
+        </tr>
+        <tr th:each="sample : ${samples}">
+            <td th:align="center" th:text="${sample.id}"></td>
+            <td th:align="center" th:text="${sample.date}"></td>
+            <td>
+                <a th:href="@{'/samples/amp/{amp}'(amp=${sample.amperage})}" th:text="${sample.amperage}"></a>
+            </td>
+            <td th:align="center" th:text="${sample.epResult}"></td>
+            <td th:align="center" th:text="${sample.blackenResult}"></td>
+            <td th:align="center">
+                <a th:href="@{'/samples/{id}'(id=${sample.id})}">
+                    <button type="button" class="btn btn-info btn-sm btn-block">📋</button>
+                </a>
+            </td>
+            <td th:align="center">
+                <a th:href="@{'/samples/delete/{id}'(id=${sample.id})}">
+                    <button type="button" class="btn btn-danger btn-sm btn-block">🗑</button>
+                </a>
+            </td>
+        </tr>
+    </table>
 </form>
 </body>
 </html>

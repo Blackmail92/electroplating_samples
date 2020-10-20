@@ -7,75 +7,77 @@
           integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
 </head>
 <body>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+        <li class="breadcrumb-item"><a th:href="@{/samples}">Список</a></li>
+        <li class="breadcrumb-item"><a th:text="'Образец №'+*{sampleById.id}"></a></li>
+    </ol>
+</nav>
 <form id="1" th:action="@{'/samples/update/{id}'(id=${sampleById.id})}" th:object="${sampleById}" th:method="post">
-    <div class="container">
-        <div class="row justify-content-md-left">
-            <div class="col">
-                <table class="table table-striped">
-                    <tr th:align="center">
-                        <th>#</th>
-                        <th>Дата</th>
-                        <th>Сила тока</th>
-                        <th>Результат высаживания</th>
-                        <th>Результат чернения</th>
-                        <th>Принять</th>
-                    </tr>
-                    <tr>
-                        <td>
-                            <input type="hidden" th:field="*{id}"/>
-                        </td>
-                        <td>
-                            <div class="form-row">
-                                <div class="col">
-                                    <input type="text" class="form-control" placeholder="Дата"
-                                           th:field="*{date}">
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-row">
-                                <div class="col">
-                                    <input type="text" class="form-control" placeholder="Сила тока"
-                                           th:field="*{amperage}">
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class="form-row">
-                                <div class="col">
-                                    <input type="text" class="form-control" placeholder="Результат высаживания"
-                                           th:field="*{epResult}">
-                                </div>
-                            </div>
-                        </td>
-                        <td>
-                            <div class=" form-row">
-                                <div class="col">
-                                    <input type="text" class="form-control" placeholder="Результат чернения"
-                                           th:field="*{blackenResult}">
-                                </div>
-                            </div>
-                        </td>
-                        <td th:align="center">
-                            <button form="1" type="submit" class="btn btn-success">✓</button>
-                        </td>
-                    </tr>
-                    <tr th:object="${sampleById}">
-                        <td th:text="*{id}"></td>
-                        <td th:text="*{date}"></td>
-                        <td th:text="*{amperage}"></td>
-                        <td th:text="*{epResult}"></td>
-                        <td th:text="*{blackenResult}"></td>
-                        <td></td>
-                    </tr>
-                </table>
-            </div>
-            <div class="col-md-auto">
-            </div>
-            <div class="col col-lg-2">
-            </div>
-        </div>
-    </div>
+    <table class="table table-striped">
+        <tr th:align="center">
+            <th>#</th>
+            <th>Дата</th>
+            <th>Сила тока</th>
+            <th>Результат высаживания</th>
+            <th>Результат чернения</th>
+            <th>Принять</th>
+        </tr>
+        <tr>
+            <td>
+                <input type="hidden" th:field="*{id}"/>
+            </td>
+            <td>
+                <div class="form-row">
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Дата"
+                               th:field="*{date}">
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="form-row">
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Сила тока"
+                               th:field="*{amperage}">
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class="form-row">
+                    <div class="col">
+                        <select required class="custom-select" id="inputGroupSelect02" th:field="*{epResult}">
+                            <option disabled value="Выберите">Результат</option>
+                            <option value="+">+</option>
+                            <option value="-">-</option>
+                        </select>
+                    </div>
+                </div>
+            </td>
+            <td>
+                <div class=" form-row">
+                    <div class="col">
+                        <select required class="custom-select" th:field="*{blackenResult}">
+                            <option disabled value="Выберите">Результат</option>
+                            <option value="+">+</option>
+                            <option value="-">-</option>
+                        </select>
+                    </div>
+                </div>
+            </td>
+            <td th:align="center">
+                <button form="1" type="submit" class="btn btn-success">✓</button>
+            </td>
+        </tr>
+        <tr th:object="${sampleById}">
+            <td th:align="center" th:text="*{id}"></td>
+            <td th:align="center" th:text="*{date}"></td>
+            <td th:align="center" th:text="*{amperage}"></td>
+            <td th:align="center" th:text="*{epResult}"></td>
+            <td th:align="center" th:text="*{blackenResult}"></td>
+            <td></td>
+        </tr>
+    </table>
 </form>
 </body>
 </html>

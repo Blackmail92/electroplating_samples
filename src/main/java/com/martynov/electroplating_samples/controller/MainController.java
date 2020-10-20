@@ -27,6 +27,14 @@ public class MainController {
         return "sampleList";
     }
 
+    @GetMapping("/amp/{amp}")
+    public String getAll(Model model, @PathVariable String amp) {
+        List<Sample> samples = sampleService.getByAmp(amp);
+        model.addAttribute("samples", samples);
+        model.addAttribute("sample", new Sample());
+        return "sampleList";
+    }
+
     @PostMapping
     public String add(@RequestParam("date") String date, @RequestParam("amperage") String amperage,
                       @RequestParam("epResult") String epResult, @RequestParam("blackenResult") String blackenResult, Model model) {
