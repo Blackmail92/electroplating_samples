@@ -49,18 +49,27 @@ public class MainController {
 
     @GetMapping(value = "delete/{id}")
     public String deleteById(@PathVariable int id) {
-        sampleService.deleteById(id);
-        return "redirect:/samples";
+        if (sampleService.deleteById(id)){
+            return "redirect:/samples";
+        } else {
+            return "idError";
+        }
     }
 
     @PostMapping(value = "update/{id}")
     public String updateById(@PathVariable int id, @RequestParam("date") String date, @RequestParam("amperage") String amperage,
                              @RequestParam("epResult") String epResult, @RequestParam("blackenResult") String blackenResult) {
-        Sample updated = new Sample(id, date, amperage, epResult, blackenResult);
-        sampleService.updateById(id, updated);
-        return "redirect:/samples";
+        Sample updated = Sample.builder()
+                .id(id)
+                .date(date)
+                .amperage(amperage)
+                .epResult(epResult)
+                .blackenResult(blackenResult)
+                .build();
+        if (sampleService.updateById(id, updated)) {
+            return "redirect:/samples";
+        } else {
+            return "idError";
+        }
     }
 }
-
-// @RequestParam("date") String date, @RequestParam("amperage") String amperage,
-//                      @RequestParam("epResult") String epResult, @RequestParam("blackenResult") String blackenResult

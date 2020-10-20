@@ -14,19 +14,19 @@ public class Sample {
     @Id
     @Column (name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;                 // Номер образца
+    private Integer id;
 
     @Column (name = "date")
-    private String date;                // Дата
+    private String date;
 
     @Column (name = "amperage")
-    private String amperage;            // Сила тока
+    private String amperage;
 
     @Column (name = "ep_result")
-    private String epResult;          // Результат высаживания
+    private String epResult;
 
     @Column (name = "blacken_result")
-    private String blackenResult;     // Результат чернения
+    private String blackenResult;
 
     public Sample (String date, String amperage, String epResult, String blackenResult) {
         this.date = date;
