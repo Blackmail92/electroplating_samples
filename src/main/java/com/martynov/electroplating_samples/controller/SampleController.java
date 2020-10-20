@@ -33,8 +33,13 @@ public class SampleController {
     }
 
     @GetMapping(value = "/amp/{amp}", produces = MediaType.APPLICATION_JSON_VALUE)
-    public List<Sample> getByAmp (@PathVariable String amp) {
-        return sampleService.getByAmp(amp);
+    public List<Sample> getAllByAmp (@PathVariable String amp) {
+        return sampleService.getAllByAmp(amp);
+    }
+
+    @GetMapping(value = "/date/{date}", produces = MediaType.APPLICATION_JSON_VALUE)
+    public List<Sample> getAllByDate (@PathVariable String date) {
+        return sampleService.getAllByDate(date);
     }
 
     @PutMapping(value = "/{id}", consumes = MediaType.APPLICATION_JSON_VALUE)

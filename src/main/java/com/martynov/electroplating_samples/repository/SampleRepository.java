@@ -6,5 +6,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 
 public interface SampleRepository extends JpaRepository<Sample, Integer> {
-    List<Sample> getByAmperage(String amperage);
+    List<Sample> getAllByAmperage(String amperage);
+    List<Sample> getAllByDate(String date);
 }

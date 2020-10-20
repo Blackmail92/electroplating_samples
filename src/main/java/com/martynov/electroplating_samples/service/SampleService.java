@@ -8,7 +8,8 @@ public interface SampleService {
     void add(Sample sample);
     List<Sample> getAll();
     Sample getById(int id);
-    List<Sample> getByAmp(String amp);
+    List<Sample> getAllByAmp(String amp);
+    List<Sample> getAllByDate(String date);
     boolean updateById(int id, Sample sample);
     boolean deleteById(int id);
 }

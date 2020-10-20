@@ -28,8 +28,16 @@ public class MainController {
     }
 
     @GetMapping("/amp/{amp}")
-    public String getAll(Model model, @PathVariable String amp) {
-        List<Sample> samples = sampleService.getByAmp(amp);
+    public String getAllByAmp(Model model, @PathVariable String amp) {
+        List<Sample> samples = sampleService.getAllByAmp(amp);
+        model.addAttribute("samples", samples);
+        model.addAttribute("sample", new Sample());
+        return "sampleList";
+    }
+
+    @GetMapping("/date/{date}")
+    public String getAllByDate(Model model, @PathVariable String date) {
+        List<Sample> samples = sampleService.getAllByDate(date);
         model.addAttribute("samples", samples);
         model.addAttribute("sample", new Sample());
         return "sampleList";
@@ -38,7 +46,8 @@ public class MainController {
     @PostMapping
     public String add(@RequestParam("date") String date, @RequestParam("amperage") String amperage,
                       @RequestParam("epResult") String epResult, @RequestParam("blackenResult") String blackenResult, Model model) {
-        Sample newSample = Sample.builder()
+        Sample newSample = Sample
+                .builder()
                 .date(date).amperage(amperage)
                 .epResult(epResult)
                 .blackenResult(blackenResult)
@@ -67,7 +76,8 @@ public class MainController {
     @PostMapping(value = "update/{id}")
     public String updateById(@PathVariable int id, @RequestParam("date") String date, @RequestParam("amperage") String amperage,
                              @RequestParam("epResult") String epResult, @RequestParam("blackenResult") String blackenResult) {
-        Sample updated = Sample.builder()
+        Sample updated = Sample
+                .builder()
                 .id(id)
                 .date(date)
                 .amperage(amperage)

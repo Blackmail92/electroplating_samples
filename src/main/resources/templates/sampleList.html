@@ -70,7 +70,9 @@
         </tr>
         <tr th:each="sample : ${samples}">
             <td th:align="center" th:text="${sample.id}"></td>
-            <td th:align="center" th:text="${sample.date}"></td>
+            <td th:align="center">
+                <a th:href="@{'/samples/date/{date}'(date=${sample.date})}" th:text="${sample.date}"></a>
+            </td>
             <td th:align="center">
                 <a th:href="@{'/samples/amp/{amp}'(amp=${sample.amperage})}" th:text="${sample.amperage}"></a>
             </td>

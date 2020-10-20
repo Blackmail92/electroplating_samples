@@ -31,8 +31,13 @@ public class SampleServiceImpl implements SampleService {
     }
 
     @Override
-    public List<Sample> getByAmp(String amp) {
-        return sampleRepository.getByAmperage(amp);
+    public List<Sample> getAllByAmp(String amp) {
+        return sampleRepository.getAllByAmperage(amp);
+    }
+
+    @Override
+    public List<Sample> getAllByDate(String date) {
+        return sampleRepository.getAllByDate(date);
     }
 
     @Override
